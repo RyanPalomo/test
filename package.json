@@ -1,6 +1,6 @@
 {
   "type": "module",
   "dependencies": {
-    "@emailjs/nodejs": "3.5.0"
+    "@emailjs/nodejs": "3.4.0"
   }
 }
