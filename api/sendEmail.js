@@ -9,16 +9,16 @@ export default async function handler(req, res) {
 
   try {
     const result = await emailjs.send(
-      'service_3s0z07c',
-      'template_6lfy60f',
+      'service_3s0z07c',     // Your EmailJS service ID
+      'template_6lfy60f',    // Your EmailJS template ID
       {
         from_name: name,
         reply_to: email,
         message,
       },
       {
-        publicKey: 'RdPBBrS5KnMImRkiW', // EmailJS public key
-        privateKey: process.env.EMAILJS_PRIVATE_KEY // Securely stored in Vercel
+        publicKey: 'RdPBBrS5KnMImRkiW',                     // Your EmailJS Public Key
+        privateKey: process.env.EMAILJS_PRIVATE_KEY        // Private key stored securely in Vercel
       }
     );
 

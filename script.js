@@ -1,7 +1,7 @@
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
-form.addEventListener('submit', async function (e) {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   status.textContent = "Sending...";
   status.style.color = "orange";
@@ -13,13 +13,13 @@ form.addEventListener('submit', async function (e) {
   };
 
   try {
-    const response = await fetch('/api/sendEmail', {
+    const res = await fetch('/api/sendEmail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
 
-    if (response.ok) {
+    if (res.ok) {
       status.textContent = "Message sent!";
       status.style.color = "green";
       form.reset();
@@ -27,9 +27,9 @@ form.addEventListener('submit', async function (e) {
       status.textContent = "Failed to send.";
       status.style.color = "red";
     }
-  } catch (error) {
-    console.error("Error:", error);
-    status.textContent = "Error sending message.";
+  } catch (err) {
+    status.textContent = "Error occurred.";
     status.style.color = "red";
+    console.error("Fetch error:", err);
   }
 });
