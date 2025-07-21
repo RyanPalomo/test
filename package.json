@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@emailjs/nodejs": "^3.11.0"
+  }
+}
