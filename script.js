@@ -1,24 +1,23 @@
 // script.js
-import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
+import emailjs from '@emailjs/browser';
 
-// ✅ Replace with your actual public key
-emailjs.init('RdPBBrS5KnMImRkiW');
+emailjs.init('RdPBBrS5KnMImRkiW'); // Replace with your actual public key
 
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
-
-form.addEventListener('submit', function (e) {
+document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  emailjs.sendForm('service_3s0z07c', 'template_6lfy60f', form)
+  const form = this;
+  const status = document.getElementById("form-status");
+
+  emailjs.sendForm("service_3s0z07c", "template_6lfy60f", form)
     .then(() => {
-      status.textContent = '✅ Message sent successfully!';
-      status.style.color = 'green';
+      status.innerText = "Message sent successfully!";
+      status.style.color = "green";
       form.reset();
     })
-    .catch((error) => {
-      console.error('Email send failed:', error);
-      status.textContent = '❌ Failed to send message.';
-      status.style.color = 'red';
+    .catch((err) => {
+      console.error("Failed to send message:", err);
+      status.innerText = "Failed to send message. Please try again later.";
+      status.style.color = "red";
     });
 });
